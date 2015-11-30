@@ -137,17 +137,25 @@ void Database_set(struct Connection *conn, int id, const char *name,
 
     addr->set = 1;
 
-//  WARNING: bug, read the "How to Break It" and fix this
+//  strncpy is bad, it won't null-terminate if size of input is greater than max data
     char *res = strncpy(addr->name, name, MAX_DATA);
-//  demonstrate the strncpy bug
+
     if (!res) {
         die("Name copy failed.");
+    }
+
+    if (sizeof(name) >= MAX_DATA) {
+        addr->name[MAX_DATA - 1] = '\0';
     }
 
     res = strncpy(addr->email, email, MAX_DATA);
 
     if (!res) {
         die("Email copy failed.");
+    }
+
+    if (sizeof(email) >= MAX_DATA) {
+        addr->email[MAX_DATA - 1] = '\0';
     }
 }
 
