@@ -3,9 +3,8 @@
 int main(int argc, char *argv[])
 {
     int i = 0;
-    while (i < argc) {
+    for (i = 1; i < argc; i++) {
         printf("arg %d: %s\n", i, argv[i]);
-        i++;
     }
 
 //  create an array of strings
@@ -14,10 +13,9 @@ int main(int argc, char *argv[])
     };
 
     int num_states = 4;
-    i = 0;
-    while (i < num_states) {
+
+    for (i = 0; i < num_states; i++) {
         printf("state %d: %s\n", i, states[i]);
-        i++;
     }
 
     return 0;
