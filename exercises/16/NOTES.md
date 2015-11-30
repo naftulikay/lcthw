@@ -51,6 +51,11 @@ int main(int argc, char *argv[])
 }
 ```
 
+A better solution here would be to use `strdup` to copy the name into a new section of memory, preventing it from being
+accidentally freed:
 
+```
+result->name = strdup(name);
+```
 
 ---
