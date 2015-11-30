@@ -25,3 +25,24 @@ char *argv[] = { &argv0, &argv1, &argv2 };
 ```
 
 ---
+
+C doesn't allow you to declare variables in for loop initializer blocks. This will fail:
+
+```
+for (int i = 0; i < length; i++)
+    continue;
+```
+
+To work around this, either declare outside of the for loop:
+
+```
+int i = 0;
+for (i = 0; i < length; i++)
+    continue;
+```
+
+Or, alternatively, you can compile with C99 support:
+
+```
+note: use option -std=c99 or -std=gnu99 to compile your code
+```
